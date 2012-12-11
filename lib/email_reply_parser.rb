@@ -68,6 +68,10 @@ class EmailReplyParser
       fragments.select{|f| !f.hidden?}.map{|f| f.to_s}.join("\n").rstrip
     end
 
+    def invisible_text
+      fragments.select { |f| f.hidden? }.map { |f| f.to_s }.join("\n").rstrip
+    end
+
     # Splits the given text into a list of Fragments.  This is roughly done by
     # reversing the text and parsing from the bottom to the top.  This way we
     # can check for 'On <date>, <author> wrote:' lines above quoted blocks.
